@@ -26,9 +26,6 @@ use Translation\PlatformAdapter\Loco\Model\LocoProject;
  */
 class TranslationAdapterLocoExtension extends Extension
 {
-    /**
-     * {@inheritdoc}
-     */
     public function load(array $configs, ContainerBuilder $container): void
     {
         $configuration = new Configuration();

@@ -50,9 +50,6 @@ class Loco implements Storage, TransferableStorage
         $this->projects = $projects;
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function get(string $locale, string $domain, string $key): ?MessageInterface
     {
         $project = $this->getProject($domain);
@@ -67,9 +64,6 @@ class Loco implements Storage, TransferableStorage
         return new Message($key, $domain, $locale, $translation, $meta);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function create(MessageInterface $message): void
     {
         $project = $this->getProject($message->getDomain());
@@ -135,9 +129,6 @@ class Loco implements Storage, TransferableStorage
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function update(MessageInterface $message): void
     {
         $project = $this->getProject($message->getDomain());
@@ -149,9 +140,6 @@ class Loco implements Storage, TransferableStorage
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function delete(string $locale, string $domain, string $key): void
     {
         $project = $this->getProject($domain);
@@ -159,9 +147,6 @@ class Loco implements Storage, TransferableStorage
         $this->client->translations()->delete($project->getApiKey(), $key, $locale);
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function export(MessageCatalogueInterface $catalogue, array $options = []): void
     {
         $locale = $catalogue->getLocale();
@@ -189,9 +174,6 @@ class Loco implements Storage, TransferableStorage
         }
     }
 
-    /**
-     * {@inheritdoc}
-     */
     public function import(MessageCatalogueInterface $catalogue, array $options = []): void
     {
         $locale = $catalogue->getLocale();
@@ -225,6 +207,6 @@ class Loco implements Storage, TransferableStorage
             }
         }
 
-        throw new StorageException(sprintf('Project for "%s" domain was not found.', $domain));
+        throw new StorageException(\sprintf('Project for "%s" domain was not found.', $domain));
     }
 }
